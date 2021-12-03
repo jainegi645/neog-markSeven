@@ -12,18 +12,16 @@ async function translate() {
 
   var outputDiv = document.querySelector("#textArea");
 
-  await fetch(
-    `https://api.funtranslations.com/translate/yoda.json?text=${text}`
-  )
+  await fetch(`https://api.funtranslations.com/translate/yoda.json?text=${text}`)
     //Promises chaining
     .then((response) => response.json())
     .then((data) => {
       var translatedMessage = data.contents.translated;
-      console.log("did you saw translated msg", translatedMessage);
+      // console.log("did you saw translated msg", translatedMessage);
       outputDiv.innerText = translatedMessage;
     })
     .catch(
-      alert(
+      console.log(
         "api calls exceeded more then 5 in a minute, please try after 1 hour"
       )
     );
